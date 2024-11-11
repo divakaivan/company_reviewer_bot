@@ -1,7 +1,7 @@
 import streamlit as st
 from openai import OpenAI
 
-st.title("기업 리뷰 챗봇")
+st.title("기업 평가 챗봇")
 
 # Sidebar for API key input
 api_key = st.sidebar.text_input("OpenAI API 키:", type="password")

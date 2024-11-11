@@ -1,10 +1,10 @@
 import streamlit as st
 from openai import OpenAI
 
-st.title("Chatbot using OpenAI GPT")
+st.title("기업 리뷰 챗봇")
 
 # Sidebar for API key input
-api_key = st.sidebar.text_input("Enter your OpenAI API key:", type="password")
+api_key = st.sidebar.text_input("OpenAI API 키:", type="password")
 
 if api_key:
 
@@ -56,4 +56,4 @@ if api_key:
                 st.markdown(f"**Assistant:** {message['content']}")
 
 else:
-    st.warning("Please enter your OpenAI API key to start chatting.")
+    st.warning("OpenAI API 키를 입력해 주세요.")

@@ -6,12 +6,7 @@ st.title("기업 리뷰 챗봇")
 # Sidebar for API key input
 api_key = st.sidebar.text_input("OpenAI API 키:", type="password")
 
-if api_key:
-
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-
-    def generate_response(messages):
+def generate_response(messages):
         client = OpenAI(api_key=api_key)
         response = client.chat.completions.create(
             model="ft:gpt-4o-mini-2024-07-18:personal:movie-reviewer-v2:AI7hIoND",
@@ -39,10 +34,15 @@ if api_key:
         
         return response.choices[0].message.content
 
+if api_key.startswith("sk-"):
+
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+
     # User input
     user_input = st.text_input("You:")
+    if st.button("입력"):
 
-    if user_input:
         st.session_state.messages.append({"role": "user", "content": user_input})
         assistant_response = generate_response({"role": "user", "content": user_input})
         
